@@ -1,1 +1,8 @@
-command was 'update'!
+[{
+    "id": 0,
+    "name": "levar o lixo"
+},
+{
+    "id": 1,
+    "name": "lavar os dentes"
+}]

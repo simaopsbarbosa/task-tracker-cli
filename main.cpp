@@ -9,9 +9,26 @@ using json = nlohmann::json;
 // open (create) json file
 std::fstream f;
 
+// check if file is empty
+bool isFileEmpty(std::string filename) {
+    std::ifstream file;
+    file.open(filename);
+    bool isEmpty(true);
+    std::string line;
+    while( file >> line ) 
+        isEmpty = false;
+    file.close();
+    return isEmpty;
+}
+
 int generateId() {
+    if (isFileEmpty("tasks.json")) {
+        std::cout << "[DEBUG] json file is empty for now \n";
+        return 0;
+    }
     f.open("tasks.json", std::ios::in);
     json tasks = json::parse(f);
+    std::cout << tasks.is_null() << std::endl;
     int highest_id = 0;
 
     for (auto &task : tasks) {
@@ -20,12 +37,12 @@ int generateId() {
             highest_id++;
         }
     }
-    std::cout << "[DEBUG] new id is " << highest_id;
+    std::cout << "[DEBUG] new id is " << highest_id << std::endl;
     f.close();
+    return highest_id;
 }
 
 int main(int argc, char *argv[]) {
-
 
     // check what first arg is
         /*  add,
@@ -54,10 +71,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (command.compare("add") == 0) {
-        f.open("tasks.json", std::ios::out);
-        id = generateId();
-        json newTask = {{"id", id}} 
-        f.close();
+        int id = generateId();
     }
 
     if (command.compare("update") == 0) {
