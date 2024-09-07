@@ -73,15 +73,15 @@ CMakeFiles/task-tracker.dir/main.cpp.o: CMakeFiles/task-tracker.dir/flags.make
 CMakeFiles/task-tracker.dir/main.cpp.o: /Users/simaobarbosa/dev/task-tracker-cli/main.cpp
 CMakeFiles/task-tracker.dir/main.cpp.o: CMakeFiles/task-tracker.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/simaobarbosa/dev/task-tracker-cli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/task-tracker.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task-tracker.dir/main.cpp.o -MF CMakeFiles/task-tracker.dir/main.cpp.o.d -o CMakeFiles/task-tracker.dir/main.cpp.o -c /Users/simaobarbosa/dev/task-tracker-cli/main.cpp
+	/opt/homebrew/bin/aarch64-apple-darwin23-g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/task-tracker.dir/main.cpp.o -MF CMakeFiles/task-tracker.dir/main.cpp.o.d -o CMakeFiles/task-tracker.dir/main.cpp.o -c /Users/simaobarbosa/dev/task-tracker-cli/main.cpp
 
 CMakeFiles/task-tracker.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/task-tracker.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/simaobarbosa/dev/task-tracker-cli/main.cpp > CMakeFiles/task-tracker.dir/main.cpp.i
+	/opt/homebrew/bin/aarch64-apple-darwin23-g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/simaobarbosa/dev/task-tracker-cli/main.cpp > CMakeFiles/task-tracker.dir/main.cpp.i
 
 CMakeFiles/task-tracker.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/task-tracker.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/simaobarbosa/dev/task-tracker-cli/main.cpp -o CMakeFiles/task-tracker.dir/main.cpp.s
+	/opt/homebrew/bin/aarch64-apple-darwin23-g++-13 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/simaobarbosa/dev/task-tracker-cli/main.cpp -o CMakeFiles/task-tracker.dir/main.cpp.s
 
 # Object files for target task-tracker
 task__tracker_OBJECTS = \
