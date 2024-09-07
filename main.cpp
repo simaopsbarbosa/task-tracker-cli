@@ -10,56 +10,69 @@ using json = nlohmann::json;
 std::fstream f;
 
 // check if file is empty
-bool isFileEmpty(const std::string& filename) {
+bool isFileEmpty(const std::string &filename)
+{
     std::ifstream file(filename);
     return file.peek() == std::ifstream::traits_type::eof();
 }
 
 // load tasks from file or initialize as empty array
-json loadTasks(const std::string& filename) {
+json loadTasks(const std::string &filename)
+{
 
     // checking if file is empty
-    if (isFileEmpty(filename)) {
+    if (isFileEmpty(filename))
+    {
         return json::array();
     }
 
     // try to parse non-empty file
     std::ifstream f(filename);
-    try {
+    try
+    {
         json tasks = json::parse(f);
         f.close();
         return tasks;
-    } catch (json::parse_error& e) {
+    }
+    catch (json::parse_error &e)
+    {
         std::cerr << "[ERROR] Failed to parse JSON: " << e.what() << "\n";
         return json::array();
     }
 }
 
 // generate next id acording to exsisting ids
-int generateId(const json& tasks) {
+int generateId(const json &tasks)
+{
     int highest_id = 0;
-    for (const auto& task : tasks) {
-        if (task["id"] > highest_id) {
+    for (const auto &task : tasks)
+    {
+        if (task["id"] > highest_id)
+        {
             highest_id = task["id"];
         }
     }
     return highest_id + 1;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 
     // check arguments
-    if (argc <= 1) {
-        std::cout << "\nno arguments.\ntry 'task-tracker help' to see available commands.\n" << std::endl;
+    if (argc <= 1)
+    {
+        std::cout << "\nno arguments.\ntry 'task-tracker help' to see available commands.\n"
+                  << std::endl;
         return 0;
     }
 
     // get first argument
-    std::string command(argv[1]); 
+    std::string command(argv[1]);
 
     /* --------------- commands --------------- */
 
-    if (command == "help") {
+    if (command == "help")
+    {
         std::cout << "\nlist of available commands:\n\n";
         std::cout << " - add <task name>\n";
         std::cout << " - update <id> <new-text>\n";
@@ -69,10 +82,12 @@ int main(int argc, char *argv[]) {
         std::cout << " - list\n\n";
     }
 
-    if (command == "add") {
+    if (command == "add")
+    {
 
-        // check if second argument was given        
-        if (argc <= 2) {
+        // check if second argument was given
+        if (argc <= 2)
+        {
             std::cout << "\nNot enough arguments (expected 2).\n\n";
             return 0;
         }
@@ -97,10 +112,12 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    if (command == "update") {
+    if (command == "update")
+    {
 
-        // check if second and third arguments were given        
-        if (argc <= 3) {
+        // check if second and third arguments were given
+        if (argc <= 3)
+        {
             std::cout << "\nNot enough arguments (expected 2).\n\n";
             return 0;
         }
@@ -113,8 +130,10 @@ int main(int argc, char *argv[]) {
         std::string newTaskName = argv[3];
 
         // edit task
-        for (auto &task : tasks) {
-            if (task["id"] == id) {
+        for (auto &task : tasks)
+        {
+            if (task["id"] == id)
+            {
                 task["name"] = newTaskName;
             }
         }
@@ -124,23 +143,51 @@ int main(int argc, char *argv[]) {
         outFile << tasks.dump(4);
         outFile.close();
         return 0;
-        
     }
 
-    if (command == "delete") {
-        
+    if (command == "delete")
+    {
+        std::cout << "cucu\n";
+        // check if second argument was given
+        if (argc <= 2)
+        {
+            std::cout << "\nNot enough arguments (expected 2).\n\n";
+            return 0;
+        }
+
+        // get the tasks array
+        json tasks = loadTasks("tasks.json");
+
+        // get task information
+        int id = std::stoi(argv[2]);
+
+        // edit task
+        json::iterator it;
+        for (json::iterator it = tasks.begin(); it != tasks.end();) {
+        if ((*it)["id"] == id) {
+            it = tasks.erase(it); 
+        } else {
+            ++it;
+        }
+}
+
+        // write changes
+        std::ofstream outFile("tasks.json");
+        outFile << tasks.dump(4);
+        outFile.close();
+        return 0;
     }
 
-    if (command == "mark-in-progress") {
-        
+    if (command == "mark-in-progress")
+    {
     }
 
-    if (command == "mark-done") {
-        
+    if (command == "mark-done")
+    {
     }
 
-    if (command == "list") {
-    
+    if (command == "list")
+    {
     }
 
     return 0;
