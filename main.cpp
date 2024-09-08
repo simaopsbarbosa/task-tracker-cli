@@ -6,9 +6,6 @@
 
 using json = nlohmann::json;
 
-// open (create) json file
-std::fstream f;
-
 // check if file is empty
 bool isFileEmpty(const std::string &filename)
 {
@@ -30,7 +27,6 @@ json loadTasks(const std::string &filename)
     try
     {
         json tasks = json::parse(f);
-        f.close();
         return tasks;
     }
     catch (json::parse_error &e)
@@ -38,6 +34,13 @@ json loadTasks(const std::string &filename)
         std::cerr << "[ERROR] Failed to parse JSON: " << e.what() << "\n";
         return json::array();
     }
+}
+
+// save tasks to file
+void saveTasks(const json &tasks, const std::string filename)
+{
+    std::ofstream outFile(filename);
+    outFile << tasks.dump(4);
 }
 
 // generate next id acording to exsisting ids
@@ -104,10 +107,8 @@ int main(int argc, char *argv[])
         // push new task
         tasks.push_back(newTask);
 
-        // write changes
-        std::ofstream outFile("tasks.json");
-        outFile << tasks.dump(4);
-        outFile.close();
+        // save to file
+        saveTasks(tasks, "tasks.json");
         return 0;
     }
 
@@ -136,10 +137,8 @@ int main(int argc, char *argv[])
             }
         }
 
-        // write changes
-        std::ofstream outFile("tasks.json");
-        outFile << tasks.dump(4);
-        outFile.close();
+        // save to file
+        saveTasks(tasks, "tasks.json");
         return 0;
     }
 
@@ -172,10 +171,8 @@ int main(int argc, char *argv[])
             }
         }
 
-        // write changes
-        std::ofstream outFile("tasks.json");
-        outFile << tasks.dump(4);
-        outFile.close();
+        // save to file
+        saveTasks(tasks, "tasks.json");
         return 0;
     }
 
@@ -203,15 +200,20 @@ int main(int argc, char *argv[])
             }
         }
 
-        // write changes
-        std::ofstream outFile("tasks.json");
-        outFile << tasks.dump(4);
-        outFile.close();
+        // save to file
+        saveTasks(tasks, "tasks.json");
         return 0;
     }
 
     if (command == "mark-done")
     {
+        // check if second argument was given
+        if (argc <= 2)
+        {
+            std::cout << "\nNot enough arguments (expected 2).\n\n";
+            return 0;
+        }
+        
         // get the tasks array
         json tasks = loadTasks("tasks.json");
 
@@ -227,10 +229,8 @@ int main(int argc, char *argv[])
             }
         }
 
-        // write changes
-        std::ofstream outFile("tasks.json");
-        outFile << tasks.dump(4);
-        outFile.close();
+        // save to file
+        saveTasks(tasks, "tasks.json");
         return 0;
     }
 
@@ -248,7 +248,7 @@ int main(int argc, char *argv[])
             std::cout << "\n";
             std::cout << "[" << std::string(flag) << "] \n";
 
-            // edit task
+            // print tasks of specified flag
             for (auto &task : tasks)
             {
                 if (task["status"] == flag)
