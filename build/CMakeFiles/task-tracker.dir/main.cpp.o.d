@@ -1,12 +1,12 @@
 CMakeFiles/task-tracker.dir/main.cpp.o: \
  /Users/simaobarbosa/dev/task-tracker-cli/main.cpp \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/iostream \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/fstream \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/requires_hosted.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/c++config.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/os_defines.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/cpu_defines.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/pstl/pstl_config.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/ostream \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/istream \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/ios \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/iosfwd \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stringfwd.h \
@@ -208,9 +208,14 @@ CMakeFiles/task-tracker.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/ctype_inline.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_facets.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/basic_ios.tcc \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/ostream \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/ostream.tcc \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/istream \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/istream.tcc \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/codecvt.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/basic_file.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/c++io.h \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/fstream.tcc \
+ /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/iostream \
  /Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-src/include/nlohmann/json.hpp \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/algorithm \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/stl_algo.h \
@@ -327,7 +332,6 @@ CMakeFiles/task-tracker.dir/main.cpp.o: \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_facets_nonio.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/time_members.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/messages_members.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/codecvt.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_facets_nonio.tcc \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/locale_conv.h \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/iomanip \
@@ -364,8 +368,4 @@ CMakeFiles/task-tracker.dir/main.cpp.o: \
  /Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-src/include/nlohmann/ordered_map.hpp \
  /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/any \
  /Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-src/include/nlohmann/detail/macro_unscope.hpp \
- /Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-src/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/fstream \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/basic_file.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/aarch64-apple-darwin23/bits/c++io.h \
- /opt/homebrew/Cellar/gcc/13.2.0/include/c++/13/bits/fstream.tcc
+ /Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-src/include/nlohmann/thirdparty/hedley/hedley_undef.hpp

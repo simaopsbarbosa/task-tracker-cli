@@ -1,8 +1,8 @@
+#include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
-#include <fstream>
-#include <vector>
 #include <string>
+#include <vector>
 
 using json = nlohmann::json;
 
@@ -19,7 +19,6 @@ bool isFileEmpty(const std::string &filename)
 // load tasks from file or initialize as empty array
 json loadTasks(const std::string &filename)
 {
-
     // checking if file is empty
     if (isFileEmpty(filename))
     {
@@ -57,11 +56,11 @@ int generateId(const json &tasks)
 
 int main(int argc, char *argv[])
 {
-
     // check arguments
     if (argc <= 1)
     {
-        std::cout << "\nno arguments.\ntry 'task-tracker help' to see available commands.\n"
+        std::cout << "\nno arguments.\ntry 'task-tracker help' to see available "
+                     "commands.\n"
                   << std::endl;
         return 0;
     }
@@ -84,7 +83,6 @@ int main(int argc, char *argv[])
 
     if (command == "add")
     {
-
         // check if second argument was given
         if (argc <= 2)
         {
@@ -115,7 +113,6 @@ int main(int argc, char *argv[])
 
     if (command == "update")
     {
-
         // check if second and third arguments were given
         if (argc <= 3)
         {
@@ -243,17 +240,32 @@ int main(int argc, char *argv[])
         json tasks = loadTasks("tasks.json");
 
         // check if any flags were given
-        if (argc > 2) {
-            
+        if (argc > 2)
+        {
             // get flag
             std::string flag = argv[2];
-            // if (flag == "")
 
-        } else {
+            std::cout << "\n";
+            std::cout << "[" << std::string(flag) << "] \n";
+
+            // edit task
+            for (auto &task : tasks)
+            {
+                if (task["status"] == flag)
+                {
+                    std::cout << "id " << task["id"] << ", " << task["name"] << "\n";
+                }
+            }
+            std::cout << "\n";
+        }
+        else
+        {
             // print all tasks
             std::cout << "\n";
-            for (auto &task : tasks) {
-                std::cout << "id " << task["id"] << ", " << task["name"] << "\n";
+            for (auto &task : tasks)
+            {
+                std::cout << "id " << task["id"] << ", [" << std::string(task["status"])
+                          << "] " << task["name"] << "\n";
             }
             std::cout << "\n";
         }
