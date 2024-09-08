@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
         json newTask;
         newTask["id"] = id;
         newTask["name"] = taskName;
+        newTask["status"] = "todo";
 
         // push new task
         tasks.push_back(newTask);
@@ -147,7 +148,42 @@ int main(int argc, char *argv[])
 
     if (command == "delete")
     {
-        std::cout << "cucu\n";
+        // check if second argument was given
+        if (argc <= 2)
+        {
+            std::cout << "\nNot enough arguments (expected 2).\n\n";
+            return 0;
+        }
+
+        // get the tasks array
+        json tasks = loadTasks("tasks.json");
+
+        // get task information
+        int id = std::stoi(argv[2]);
+
+        // erase task
+        json::iterator it;
+        for (json::iterator it = tasks.begin(); it != tasks.end();)
+        {
+            if ((*it)["id"] == id)
+            {
+                it = tasks.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+
+        // write changes
+        std::ofstream outFile("tasks.json");
+        outFile << tasks.dump(4);
+        outFile.close();
+        return 0;
+    }
+
+    if (command == "mark-in-progress")
+    {
         // check if second argument was given
         if (argc <= 2)
         {
@@ -162,14 +198,13 @@ int main(int argc, char *argv[])
         int id = std::stoi(argv[2]);
 
         // edit task
-        json::iterator it;
-        for (json::iterator it = tasks.begin(); it != tasks.end();) {
-        if ((*it)["id"] == id) {
-            it = tasks.erase(it); 
-        } else {
-            ++it;
+        for (auto &task : tasks)
+        {
+            if (task["id"] == id)
+            {
+                task["status"] = "in-progress";
+            }
         }
-}
 
         // write changes
         std::ofstream outFile("tasks.json");
@@ -178,16 +213,50 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    if (command == "mark-in-progress")
-    {
-    }
-
     if (command == "mark-done")
     {
+        // get the tasks array
+        json tasks = loadTasks("tasks.json");
+
+        // get task information
+        int id = std::stoi(argv[2]);
+
+        // edit task
+        for (auto &task : tasks)
+        {
+            if (task["id"] == id)
+            {
+                task["status"] = "done";
+            }
+        }
+
+        // write changes
+        std::ofstream outFile("tasks.json");
+        outFile << tasks.dump(4);
+        outFile.close();
+        return 0;
     }
 
     if (command == "list")
     {
+        // get the tasks array
+        json tasks = loadTasks("tasks.json");
+
+        // check if any flags were given
+        if (argc > 2) {
+            
+            // get flag
+            std::string flag = argv[2];
+            // if (flag == "")
+
+        } else {
+            // print all tasks
+            std::cout << "\n";
+            for (auto &task : tasks) {
+                std::cout << "id " << task["id"] << ", " << task["name"] << "\n";
+            }
+            std::cout << "\n";
+        }
     }
 
     return 0;

@@ -1,10 +1,12 @@
 [
     {
         "id": 2,
-        "name": "simaob"
+        "name": "proximo projeto",
+        "status": "in-progress"
     },
     {
         "id": 3,
-        "name": "simaoba"
+        "name": "hello",
+        "status": "todo"
     }
 ]
