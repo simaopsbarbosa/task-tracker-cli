@@ -1,5 +1,0 @@
-/Users/simaobarbosa/dev/task-tracker-cli/build/CMakeFiles/task-tracker.dir
-/Users/simaobarbosa/dev/task-tracker-cli/build/CMakeFiles/edit_cache.dir
-/Users/simaobarbosa/dev/task-tracker-cli/build/CMakeFiles/rebuild_cache.dir
-/Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-build/CMakeFiles/edit_cache.dir
-/Users/simaobarbosa/dev/task-tracker-cli/build/_deps/nlohmann_json-build/CMakeFiles/rebuild_cache.dir
